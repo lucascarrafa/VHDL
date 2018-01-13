@@ -1,0 +1,24 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+ENTITY Decoder_2_to_4 IS PORT(
+	E: IN STD_LOGIC; 
+	A: IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+	Y: OUT STD_LOGIC_VECTOR(3 DOWNTO 0));
+END Decoder_2_to_4;
+ARCHITECTURE Behavioral OF Decoder_2_to_4 IS
+BEGIN
+ PROCESS (E, A)
+ BEGIN
+	 IF (E = '0') THEN 
+		Y <= (OTHERS => '0');
+	 ELSE
+		 CASE A IS
+			 WHEN "00" => Y <= "0001";
+			 WHEN "01" => Y <= "0010";
+			 WHEN "10" => Y <= "0100";
+			 WHEN "11" => Y <= "1000";
+			 WHEN OTHERS => NULL;
+		 END CASE;
+	 END IF;
+ END PROCESS;
+END Behavioral; 

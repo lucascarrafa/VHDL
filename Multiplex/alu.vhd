@@ -1,0 +1,25 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+ENTITY alu IS PORT (
+	S: IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+	A, B: IN STD_LOGIC_VECTOR(3 DOWNTO 0); 
+	F: OUT STD_LOGIC_VECTOR(3 DOWNTO 0)); 
+END alu;
+ARCHITECTURE Behavior OF alu IS
+	BEGIN
+	PROCESS(S, A, B)
+		BEGIN
+			CASE S IS
+				WHEN "000" => F <= A;
+				WHEN "001" => F <= A AND B;
+				WHEN "010" => F <= A OR B;
+				WHEN "011" => F <= NOT A;
+				WHEN "100" => F <= A + B;
+				WHEN "101" => F <= A - B;
+				WHEN "110" =>F <= A + 1;
+				WHEN OTHERS => F <= A - 1;
+			END CASE;
+	END PROCESS;
+END Behavior; 
